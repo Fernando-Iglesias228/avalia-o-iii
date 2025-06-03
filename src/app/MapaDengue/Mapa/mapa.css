@@ -1,0 +1,58 @@
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#map {
+    width: 80%;
+    height: 600px;
+    margin: 20px auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.form-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#form-cadastro-foco {
+    background-color: var(--primary-color);
+    padding: 10px;
+}
+
+#form-title{
+    text-align: center;
+}
+
+input{
+    margin: 2px;
+}
+
+#suggestions {
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ced4da;
+    border-radius: 0 0 0.25rem 0.25rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#suggestions .list-group-item {
+    cursor: pointer;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 8px 12px;
+}
+
+#suggestions .list-group-item:hover {
+    background-color: #f8f9fa;
+}

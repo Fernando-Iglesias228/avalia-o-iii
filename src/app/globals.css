@@ -1,0 +1,70 @@
+:root {
+    --primary-color: rgb(179, 179, 179);
+    --secondary-color: rgb(121, 121, 121);
+    --tertiary-color: rgb(85, 85, 85);
+    --accent-color: rgb(131, 0, 0, 0.4);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--secondary-color);
+    color: #333;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.nav-item.active .nav-link {
+    font-weight: bold;
+    color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),  url("https://cdn6.campograndenews.com.br/uploads/noticias/2023/01/19/3f28ttpzobuok.jpeg");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
+    color: white;
+    padding: 100px 0;
+    margin-bottom: 40px;
+}
+
+.button-1 {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 10px 25px;
+    font-weight: 600;
+}
+
+.button-1:hover {
+    background-color: var(--accent-color);
+    border-color: #6B0000;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.footer {
+    background-color: var(--tertiary-color);
+    color: white;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+.menu-highlight {
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.menu-highlight:hover {
+    transform: scale(1.03);
+}
