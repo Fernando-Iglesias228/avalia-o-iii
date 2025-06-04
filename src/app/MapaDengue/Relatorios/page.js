@@ -1,10 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import PageHead from '@/components/head';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import Mapa from '@/components/map';
+import * as turf from '@turf/turf';
 
 const DynamicMap = dynamic(() => import('@/components/mapLeaflet'), {
   ssr: false,
@@ -12,100 +13,94 @@ const DynamicMap = dynamic(() => import('@/components/mapLeaflet'), {
 });
 
 export default function Relatorios() {
+  const currentPage = 'Relatorios';
+
   const [bairros, setBairros] = useState([]);
+  const [focosComBairro, setFocosComBairro] = useState([]);
   const [focosFiltrados, setFocosFiltrados] = useState([]);
   const [carregando, setCarregando] = useState(true);
 
   useEffect(() => {
-    async function carregarBairros() {
+    async function carregarFocosComBairro() {
       try {
-        const response = await fetch('/api/focos');
-        if (!response.ok) throw new Error('Erro ao carregar focos');
+        const responseBairros = await fetch('/data/bairros.geojson');
+        if (!responseBairros.ok) throw new Error('Erro ao carregar bairros');
+        const geojsonBairros = await responseBairros.json();
 
-        const focos = await response.json();
-        const provider = new OpenStreetMapProvider();
-        const bairrosUnicos = [];
-        
-        for (const foco of focos) {
-          try {
-            const results = await provider.search({ query: foco.endereco });
-            if (results.length > 0) {
-              const address = results[0].raw.address;
-              const bairro = address.neighbourhood || address.suburb || address.city_district;
-              if (bairro && !bairrosUnicos.includes(bairro)) {
-                bairrosUnicos.push(bairro);
-              }
-            }
-          } catch (error) {
-            console.error('Erro ao geocodificar:', foco.endereco, error);
-          }
-        }
-        
-        setBairros(bairrosUnicos);
-        setFocosFiltrados(focos);
+        const responseFocos = await fetch('/api/focos');
+        if (!responseFocos.ok) throw new Error('Erro ao carregar focos do banco');
+        const focos = await responseFocos.json();
+
+        const focosComBairroTemp = focos.map((foco) => {
+          const ponto = turf.point([foco.lng, foco.lat]);
+          const bairroEncontrado = geojsonBairros.features.find((feature) =>
+            turf.booleanPointInPolygon(ponto, feature)
+          );
+          return {
+            ...foco,
+            bairro: bairroEncontrado?.properties.name || '',
+          };
+        });
+
+        setFocosComBairro(focosComBairroTemp);
+
+        const bairrosSet = new Set(
+          focosComBairroTemp
+            .map((f) => f.bairro)
+            .filter((b) => b && b.trim() !== '')
+        );
+        setBairros(Array.from(bairrosSet).sort());
+
+        setFocosFiltrados(focosComBairroTemp);
         setCarregando(false);
       } catch (error) {
-        console.error('Erro:', error);
+        console.error('Erro ao carregar dados:', error);
         setCarregando(false);
       }
     }
 
-    carregarBairros();
+    carregarFocosComBairro();
   }, []);
 
-  const handleFiltrarPorBairro = async (bairro) => {
+
+  const handleFiltrarPorBairro = (bairro) => {
     if (!bairro) {
-      const response = await fetch('/api/focos');
-      setFocosFiltrados(await response.json());
+      setFocosFiltrados(focosComBairro);
       return;
     }
 
-    const provider = new OpenStreetMapProvider();
-    const focosFiltrados = [];
-
-    const response = await fetch('/api/focos');
-    const todosFocos = await response.json();
-
-    for (const foco of todosFocos) {
-      try {
-        const results = await provider.search({ query: foco.endereco });
-        if (results.length > 0) {
-          const address = results[0].raw.address;
-          const focoBairro = address.neighbourhood || address.suburb || address.city_district;
-          if (focoBairro && focoBairro.toLowerCase().includes(bairro.toLowerCase())) {
-            focosFiltrados.push(foco);
-          }
-        }
-      } catch (error) {
-        console.error('Erro ao geocodificar:', foco.endereco, error);
-      }
-    }
-
+    const focosFiltrados = focosComBairro.filter((foco) =>
+      foco.bairro.toLowerCase().includes(bairro.toLowerCase())
+    );
     setFocosFiltrados(focosFiltrados);
   };
 
   return (
     <>
-      <PageHead currentPage={currentPage}/>
-      <Header currentPage={currentPage}/>
-      
+      <PageHead currentPage={currentPage} />
+      <Header currentPage={currentPage} />
+
       <div className="container mt-4">
         <div className="report-picker card p-4 mb-4">
           <div className="mb-3">
-            <label htmlFor="busca-bairro" className="form-label">Buscar Bairro:</label>
-            <input 
-              type="text" 
-              id="busca-bairro" 
-              className="form-control" 
+            <label htmlFor="busca-bairro" className="form-label">
+              Buscar Bairro:
+            </label>
+            <input
+              type="text"
+              id="busca-bairro"
+              className="form-control"
               placeholder="Digite para filtrar..."
               onChange={(e) => handleFiltrarPorBairro(e.target.value)}
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="foco-bairro" className="form-label">Selecione um Bairro:</label>
-            <select 
-              id="foco-bairro" 
-              name="foco-bairro" 
+            <label htmlFor="foco-bairro" className="form-label">
+              Selecione um Bairro:
+            </label>
+            <select
+              id="foco-bairro"
+              name="foco-bairro"
               className="form-control"
               onChange={(e) => handleFiltrarPorBairro(e.target.value)}
             >
@@ -113,8 +108,10 @@ export default function Relatorios() {
               {carregando ? (
                 <option value="">Carregando bairros...</option>
               ) : (
-                bairros.map(bairro => (
-                  <option key={bairro} value={bairro}>{bairro}</option>
+                bairros.map((bairro) => (
+                  <option key={bairro} value={bairro}>
+                    {bairro}
+                  </option>
                 ))
               )}
             </select>
@@ -122,10 +119,10 @@ export default function Relatorios() {
         </div>
 
         <div className="map-container">
-          <div id="map" style={{ height: '500px', width: '100%' }} />
+          <Mapa allMarkers={focosFiltrados} />
         </div>
       </div>
-      
+
       <Footer />
     </>
   );

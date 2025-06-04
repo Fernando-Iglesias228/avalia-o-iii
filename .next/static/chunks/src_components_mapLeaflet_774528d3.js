@@ -28,23 +28,32 @@ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2f$dist$
 });
 function MapLeaflet({ allMarkers = [], onMarkerDelete }) {
     _s();
+    const mapRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const markersRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])([]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "MapLeaflet.useEffect": ()=>{
-            const map = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2f$dist$2f$leaflet$2d$src$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].map('map').setView([
-                -20.4697,
-                -54.6201
-            ], 13);
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2f$dist$2f$leaflet$2d$src$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-            const provider = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2d$geosearch$2f$dist$2f$geosearch$2e$module$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["OpenStreetMapProvider"]();
-            const searchControl = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2d$geosearch$2f$dist$2f$geosearch$2e$module$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GeoSearchControl"]({
-                provider,
-                style: 'bar',
-                showMarker: true,
-                autoClose: true
-            });
-            map.addControl(searchControl);
+            if (!mapRef.current) {
+                mapRef.current = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2f$dist$2f$leaflet$2d$src$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].map('map').setView([
+                    -20.4697,
+                    -54.6201
+                ], 13);
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2f$dist$2f$leaflet$2d$src$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(mapRef.current);
+                const provider = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2d$geosearch$2f$dist$2f$geosearch$2e$module$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["OpenStreetMapProvider"]();
+                const searchControl = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2d$geosearch$2f$dist$2f$geosearch$2e$module$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GeoSearchControl"]({
+                    provider,
+                    style: 'bar',
+                    showMarker: true,
+                    autoClose: true
+                });
+                mapRef.current.addControl(searchControl);
+            }
+            const map = mapRef.current;
+            markersRef.current.forEach({
+                "MapLeaflet.useEffect": (marker)=>map.removeLayer(marker)
+            }["MapLeaflet.useEffect"]);
+            markersRef.current = [];
             const dengueIcon = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2f$dist$2f$leaflet$2d$src$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].icon({
                 iconUrl: 'https://cdn-icons-png.flaticon.com/512/484/484167.png',
                 iconSize: [
@@ -97,6 +106,7 @@ function MapLeaflet({ allMarkers = [], onMarkerDelete }) {
                     ], {
                         icon: dengueIcon
                     }).addTo(map).bindPopup(popupContent);
+                    markersRef.current.push(leafletMarker);
                     leafletMarker.on('popupopen', {
                         "MapLeaflet.useEffect": ()=>{
                             const viewBtn = document.querySelector(`.view-btn[data-id="${marker.id}"]`);
@@ -149,7 +159,10 @@ function MapLeaflet({ allMarkers = [], onMarkerDelete }) {
             }
             return ({
                 "MapLeaflet.useEffect": ()=>{
-                    map.remove();
+                    markersRef.current.forEach({
+                        "MapLeaflet.useEffect": (marker)=>map.removeLayer(marker)
+                    }["MapLeaflet.useEffect"]);
+                    markersRef.current = [];
                 }
             })["MapLeaflet.useEffect"];
         }
@@ -165,11 +178,11 @@ function MapLeaflet({ allMarkers = [], onMarkerDelete }) {
         }
     }, void 0, false, {
         fileName: "[project]/src/components/mapLeaflet.js",
-        lineNumber: 123,
+        lineNumber: 137,
         columnNumber: 10
     }, this);
 }
-_s(MapLeaflet, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+_s(MapLeaflet, "nGxKdno1kqfm3OJQlcGFVPKh7dI=");
 _c = MapLeaflet;
 var _c;
 __turbopack_context__.k.register(_c, "MapLeaflet");

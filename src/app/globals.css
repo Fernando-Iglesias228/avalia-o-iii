@@ -33,18 +33,6 @@ body {
     margin-bottom: 40px;
 }
 
-.button-1 {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    padding: 10px 25px;
-    font-weight: 600;
-}
-
-.button-1:hover {
-    background-color: var(--accent-color);
-    border-color: #6B0000;
-}
-
 .feature-icon {
     font-size: 2.5rem;
     color: var(--accent-color);

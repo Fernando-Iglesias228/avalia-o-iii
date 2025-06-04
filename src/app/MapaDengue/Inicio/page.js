@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import PageHead from "@/components/head";
 import Header from "@/components/header";
 import Footer from "@/components/footer";

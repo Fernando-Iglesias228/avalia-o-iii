@@ -1,0 +1,11 @@
+{
+  "[project]/src/components/mapLeaflet.js [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/mapLeaflet.js [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_037cfbd6._.js",
+      "static/chunks/src_components_mapLeaflet_774528d3.js",
+      "static/chunks/node_modules_5fb760f2._.css",
+      "static/chunks/src_components_mapLeaflet_1da18bda.js"
+    ]
+  }
+}

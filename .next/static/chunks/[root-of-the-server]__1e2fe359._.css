@@ -131,18 +131,6 @@ body {
   padding: 100px 0;
 }
 
-.button-1 {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  padding: 10px 25px;
-  font-weight: 600;
-}
-
-.button-1:hover {
-  background-color: var(--accent-color);
-  border-color: #6b0000;
-}
-
 .feature-icon {
   color: var(--accent-color);
   margin-bottom: 15px;

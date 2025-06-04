@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
@@ -14,21 +14,30 @@ L.Icon.Default.mergeOptions({
 });
 
 export default function MapLeaflet({ allMarkers = [], onMarkerDelete }) {
+  const mapRef = useRef(null);
+  const markersRef = useRef([]);
+
   useEffect(() => {
-    const map = L.map('map').setView([-20.4697, -54.6201], 13);
+    if (!mapRef.current) {
+      mapRef.current = L.map('map').setView([-20.4697, -54.6201], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(mapRef.current);
 
-    const provider = new OpenStreetMapProvider();
-    const searchControl = new GeoSearchControl({
-      provider,
-      style: 'bar',
-      showMarker: true,
-      autoClose: true,
-    });
-    map.addControl(searchControl);
+      const provider = new OpenStreetMapProvider();
+      const searchControl = new GeoSearchControl({
+        provider,
+        style: 'bar',
+        showMarker: true,
+        autoClose: true,
+      });
+      mapRef.current.addControl(searchControl);
+    }
+
+    const map = mapRef.current;
+    markersRef.current.forEach(marker => map.removeLayer(marker));
+    markersRef.current = [];
 
     const dengueIcon = L.icon({
       iconUrl: 'https://cdn-icons-png.flaticon.com/512/484/484167.png',
@@ -39,7 +48,7 @@ export default function MapLeaflet({ allMarkers = [], onMarkerDelete }) {
 
     allMarkers.forEach((marker) => {
       const hasImage = marker.imagem && marker.imagem !== 'null';
-      
+
       const popupContent = `
         <div class="leaflet-popup-content-wrapper">
           <div class="leaflet-popup-content">
@@ -72,6 +81,8 @@ export default function MapLeaflet({ allMarkers = [], onMarkerDelete }) {
       const leafletMarker = L.marker([marker.lat, marker.lng], { icon: dengueIcon })
         .addTo(map)
         .bindPopup(popupContent);
+
+      markersRef.current.push(leafletMarker);
 
       leafletMarker.on('popupopen', () => {
         const viewBtn = document.querySelector(`.view-btn[data-id="${marker.id}"]`);
@@ -111,12 +122,15 @@ export default function MapLeaflet({ allMarkers = [], onMarkerDelete }) {
     });
 
     if (allMarkers.length > 0) {
-      const group = new L.featureGroup(allMarkers.map(m => L.marker([m.lat, m.lng])));
+      const group = new L.featureGroup(
+        allMarkers.map((m) => L.marker([m.lat, m.lng]))
+      );
       map.fitBounds(group.getBounds().pad(0.2));
     }
 
     return () => {
-      map.remove();
+      markersRef.current.forEach(marker => map.removeLayer(marker));
+      markersRef.current = [];
     };
   }, [allMarkers, onMarkerDelete]);
 
