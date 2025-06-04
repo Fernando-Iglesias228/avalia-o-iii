@@ -1,4 +1,5 @@
 {
+  "/MapaDengue/Inicio/page": "app/MapaDengue/Inicio/page.js",
   "/MapaDengue/Mapa/page": "app/MapaDengue/Mapa/page.js",
   "/api/focos/[id]/route": "app/api/focos/[id]/route.js",
   "/api/focos/route": "app/api/focos/route.js",

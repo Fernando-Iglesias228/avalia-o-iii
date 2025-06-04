@@ -1,6 +1,7 @@
 import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
+import { openDB } from './dbConfig';
 
 const dbFile = path.join(process.cwd(), 'db.sqlite');
 
@@ -66,4 +67,10 @@ export function deleteFoco(id) {
     console.error('Erro ao deletar foco:', error);
     throw error;
   }
+}
+
+export async function getFocoById(id) {
+  const db = await openDB();
+  const foco = await db.get("SELECT * FROM focos WHERE id = ?", [id]);
+  return foco;
 }

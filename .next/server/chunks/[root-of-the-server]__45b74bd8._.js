@@ -85,11 +85,18 @@ var { g: global, __dirname } = __turbopack_context__;
 __turbopack_context__.s({
     "deleteFoco": (()=>deleteFoco),
     "getAllFocos": (()=>getAllFocos),
+    "getFocoById": (()=>getFocoById),
     "insertFoco": (()=>insertFoco)
 });
 var __TURBOPACK__imported__module__$5b$externals$5d2f$better$2d$sqlite3__$5b$external$5d$__$28$better$2d$sqlite3$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/better-sqlite3 [external] (better-sqlite3, cjs)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/path [external] (path, cjs)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/fs [external] (fs, cjs)");
+(()=>{
+    const e = new Error("Cannot find module './dbConfig'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
+;
 ;
 ;
 ;
@@ -159,35 +166,68 @@ function deleteFoco(id) {
         throw error;
     }
 }
+async function getFocoById(id) {
+    const db = await openDB(); // sua função de abrir conexão
+    const foco = await db.get("SELECT * FROM focos WHERE id = ?", [
+        id
+    ]);
+    return foco;
+} // export function getFocoById(id) {
+ //   try {
+ //     const stmt = db.prepare("SELECT * FROM focos WHERE id = ?");
+ //     return stmt.get(id);
+ //   } catch (error) {
+ //     console.error('Erro ao buscar foco:', error);
+ //     throw error;
+ //   }
+ // }
 }}),
 "[project]/src/app/api/focos/[id]/route.js [app-route] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { g: global, __dirname } = __turbopack_context__;
 {
-// app/api/focos/[id]/route.js
 __turbopack_context__.s({
     "DELETE": (()=>DELETE)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/server.js [app-route] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/db.js [app-route] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/fs [external] (fs, cjs)");
+var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/path [external] (path, cjs)");
+;
+;
 ;
 ;
 async function DELETE(request, { params }) {
-    const { id } = params;
+    const { id } = await params;
     try {
-        const result = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["deleteFoco"])(id);
-        if (result.changes === 0) {
+        const foco = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["getFocoById"])(id);
+        if (!foco) {
             return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
                 error: "Foco não encontrado"
             }, {
                 status: 404
             });
         }
+        const result = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["deleteFoco"])(id);
+        if (result.changes === 0) {
+            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                error: "Foco não foi deletado"
+            }, {
+                status: 500
+            });
+        }
+        const imagePath = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(process.cwd(), "public", "uploads", foco.imagem);
+        __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].unlink(imagePath, (err)=>{
+            if (err) {
+                console.error("Erro ao deletar a imagem:", err);
+            }
+        });
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
             message: "Foco deletado com sucesso"
         });
     } catch (error) {
+        console.error("Erro no DELETE:", error);
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
             error: "Erro ao deletar foco"
         }, {

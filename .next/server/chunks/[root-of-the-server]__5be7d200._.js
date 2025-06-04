@@ -77,11 +77,18 @@ var { g: global, __dirname } = __turbopack_context__;
 __turbopack_context__.s({
     "deleteFoco": (()=>deleteFoco),
     "getAllFocos": (()=>getAllFocos),
+    "getFocoById": (()=>getFocoById),
     "insertFoco": (()=>insertFoco)
 });
 var __TURBOPACK__imported__module__$5b$externals$5d2f$better$2d$sqlite3__$5b$external$5d$__$28$better$2d$sqlite3$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/better-sqlite3 [external] (better-sqlite3, cjs)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/path [external] (path, cjs)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/fs [external] (fs, cjs)");
+(()=>{
+    const e = new Error("Cannot find module './dbConfig'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
+;
 ;
 ;
 ;
@@ -151,6 +158,21 @@ function deleteFoco(id) {
         throw error;
     }
 }
+async function getFocoById(id) {
+    const db = await openDB(); // sua função de abrir conexão
+    const foco = await db.get("SELECT * FROM focos WHERE id = ?", [
+        id
+    ]);
+    return foco;
+} // export function getFocoById(id) {
+ //   try {
+ //     const stmt = db.prepare("SELECT * FROM focos WHERE id = ?");
+ //     return stmt.get(id);
+ //   } catch (error) {
+ //     console.error('Erro ao buscar foco:', error);
+ //     throw error;
+ //   }
+ // }
 }}),
 "[project]/src/app/api/focos/route.js [app-route] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
