@@ -4,7 +4,7 @@ import Footer from "@/components/footer";
 
 
 export default function Sobre() {
-  let currentPage = 'Sobre'
+  const currentPage = 'Sobre'
   
   return (
     <>
