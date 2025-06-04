@@ -6,7 +6,7 @@ import PageHead from '@/components/head';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
-const DynamicMap = dynamic(() => import('@/components/MapLeaflet'), {
+const DynamicMap = dynamic(() => import('@/components/mapLeaflet'), {
   ssr: false,
   loading: () => <p>Carregando mapa...</p>,
 });

@@ -8,4 +8,4 @@ Primeiro inicie o servidor de desenvolvimento:
 npm run dev
 ```
 
-Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
+Abra [http://localhost:3000/MapaDengue/Inicio](http://localhost:3000/MapaDengue/Inicio) no seu navegador.

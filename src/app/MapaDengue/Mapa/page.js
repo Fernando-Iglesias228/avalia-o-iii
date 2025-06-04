@@ -3,6 +3,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Mapa from "@/components/map";
 import SubmitFocos from "@/components/submitFocos";
+import EnderecoAutoComplete from "@/components/enderecoAutoComplete";
 import "./mapa.css";
 
 export default async function PaginaMapa() {
@@ -35,9 +36,10 @@ export default async function PaginaMapa() {
           </div>
 
           <div className="mb-3 position-relative">
-            <label htmlFor="addrs-foco" className="form-label">Endereço do foco: *</label>
+            <EnderecoAutoComplete />
+            {/* <label htmlFor="addrs-foco" className="form-label">Endereço do foco: *</label>
             <input type="text" className="form-control" id="addrs-foco" name="addrs-foco" required autoComplete="off" />
-            <div id="suggestions" className="list-group"></div>
+            <div id="suggestions" className="list-group"></div> */}
           </div>
 
           <div className="mb-3">
