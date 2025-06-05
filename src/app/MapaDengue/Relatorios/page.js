@@ -6,6 +6,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Mapa from '@/components/map';
 import * as turf from '@turf/turf';
+import FocosBairro from '@/components/focosBairro';
 
 const DynamicMap = dynamic(() => import('@/components/mapLeaflet'), {
   ssr: false,
@@ -121,8 +122,11 @@ export default function Relatorios() {
         <div className="map-container">
           <Mapa allMarkers={focosFiltrados} />
         </div>
+      
+        <div className='report-container'>
+              <FocosBairro allMarkers={focosFiltrados} />
+        </div>
       </div>
-
       <Footer />
     </>
   );

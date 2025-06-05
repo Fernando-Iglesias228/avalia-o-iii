@@ -470,6 +470,111 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
+"[project]/src/components/focosBairro.js [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "default": (()=>FocosBairro)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+;
+function FocosBairro({ allMarkers = [] }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                children: "Focos do Bairro"
+            }, void 0, false, {
+                fileName: "[project]/src/components/focosBairro.js",
+                lineNumber: 4,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                children: allMarkers.map((foco)=>{
+                    const hasImage = foco.imagem && foco.imagem !== 'null';
+                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("b", {
+                                        children: [
+                                            foco.nome || 'Não informado',
+                                            ":"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/focosBairro.js",
+                                        lineNumber: 12,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                        fileName: "[project]/src/components/focosBairro.js",
+                                        lineNumber: 12,
+                                        columnNumber: 55
+                                    }, this),
+                                    foco.endereco,
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                        fileName: "[project]/src/components/focosBairro.js",
+                                        lineNumber: 13,
+                                        columnNumber: 32
+                                    }, this),
+                                    "Tipo: ",
+                                    foco.tipo,
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                        fileName: "[project]/src/components/focosBairro.js",
+                                        lineNumber: 14,
+                                        columnNumber: 34
+                                    }, this),
+                                    foco.data_registro ? `Registrado em: ${new Date(foco.data_registro).toLocaleDateString()}` : ''
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/focosBairro.js",
+                                lineNumber: 11,
+                                columnNumber: 15
+                            }, this),
+                            hasImage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                href: foco.imagem,
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    className: "btn btn-sm btn-primary view-btn flex-grow-1",
+                                    children: "Ver Foto"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/focosBairro.js",
+                                    lineNumber: 25,
+                                    columnNumber: 19
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/focosBairro.js",
+                                lineNumber: 20,
+                                columnNumber: 17
+                            }, this)
+                        ]
+                    }, foco.id, true, {
+                        fileName: "[project]/src/components/focosBairro.js",
+                        lineNumber: 10,
+                        columnNumber: 13
+                    }, this);
+                })
+            }, void 0, false, {
+                fileName: "[project]/src/components/focosBairro.js",
+                lineNumber: 5,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/focosBairro.js",
+        lineNumber: 3,
+        columnNumber: 5
+    }, this);
+}
+_c = FocosBairro;
+var _c;
+__turbopack_context__.k.register(_c, "FocosBairro");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
 "[project]/src/app/MapaDengue/Relatorios/page.js [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
@@ -487,10 +592,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$footer$
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$map$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/map.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$turf$2f$helpers$2f$dist$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@turf/helpers/dist/esm/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$turf$2f$boolean$2d$point$2d$in$2d$polygon$2f$dist$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@turf/boolean-point-in-polygon/dist/esm/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$focosBairro$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/focosBairro.js [app-client] (ecmascript)");
 ;
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
+;
 ;
 ;
 ;
@@ -509,7 +616,7 @@ const DynamicMap = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modu
             children: "Carregando mapa..."
         }, void 0, false, {
             fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-            lineNumber: 12,
+            lineNumber: 13,
             columnNumber: 18
         }, this)
 });
@@ -577,14 +684,14 @@ function Relatorios() {
                 currentPage: currentPage
             }, void 0, false, {
                 fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                lineNumber: 80,
+                lineNumber: 81,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$header$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 currentPage: currentPage
             }, void 0, false, {
                 fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                lineNumber: 81,
+                lineNumber: 82,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -602,7 +709,7 @@ function Relatorios() {
                                         children: "Buscar Bairro:"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                                        lineNumber: 86,
+                                        lineNumber: 87,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -613,13 +720,13 @@ function Relatorios() {
                                         onChange: (e)=>handleFiltrarPorBairro(e.target.value)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                                        lineNumber: 89,
+                                        lineNumber: 90,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                                lineNumber: 85,
+                                lineNumber: 86,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -631,7 +738,7 @@ function Relatorios() {
                                         children: "Selecione um Bairro:"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                                        lineNumber: 98,
+                                        lineNumber: 99,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -645,7 +752,7 @@ function Relatorios() {
                                                 children: "Todos os bairros"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                                                lineNumber: 107,
+                                                lineNumber: 108,
                                                 columnNumber: 15
                                             }, this),
                                             carregando ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -653,32 +760,32 @@ function Relatorios() {
                                                 children: "Carregando bairros..."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                                                lineNumber: 109,
+                                                lineNumber: 110,
                                                 columnNumber: 17
                                             }, this) : bairros.map((bairro)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                     value: bairro,
                                                     children: bairro
                                                 }, bairro, false, {
                                                     fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                                                    lineNumber: 112,
+                                                    lineNumber: 113,
                                                     columnNumber: 19
                                                 }, this))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                                        lineNumber: 101,
+                                        lineNumber: 102,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                                lineNumber: 97,
+                                lineNumber: 98,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                        lineNumber: 84,
+                        lineNumber: 85,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -687,37 +794,37 @@ function Relatorios() {
                             allMarkers: focosFiltrados
                         }, void 0, false, {
                             fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                            lineNumber: 122,
+                            lineNumber: 123,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                        lineNumber: 121,
+                        lineNumber: 122,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "report-container",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("focosBairro", {
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$focosBairro$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                             allMarkers: focosFiltrados
                         }, void 0, false, {
                             fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                            lineNumber: 126,
+                            lineNumber: 127,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                        lineNumber: 125,
+                        lineNumber: 126,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                lineNumber: 83,
+                lineNumber: 84,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$footer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/src/app/MapaDengue/Relatorios/page.js",
-                lineNumber: 129,
+                lineNumber: 130,
                 columnNumber: 7
             }, this)
         ]
@@ -735,4 +842,4 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 }}),
 }]);
 
-//# sourceMappingURL=src_e696e708._.js.map
+//# sourceMappingURL=src_5663fef3._.js.map
