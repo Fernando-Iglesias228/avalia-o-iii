@@ -37,9 +37,6 @@ export default async function PaginaMapa() {
 
           <div className="mb-3 position-relative">
             <EnderecoAutoComplete />
-            {/* <label htmlFor="addrs-foco" className="form-label">Endereço do foco: *</label>
-            <input type="text" className="form-control" id="addrs-foco" name="addrs-foco" required autoComplete="off" />
-            <div id="suggestions" className="list-group"></div> */}
           </div>
 
           <div className="mb-3">

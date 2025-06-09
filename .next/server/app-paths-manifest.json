@@ -1,9 +1,6 @@
 {
-  "/MapaDengue/Inicio/page": "app/MapaDengue/Inicio/page.js",
   "/MapaDengue/Mapa/page": "app/MapaDengue/Mapa/page.js",
   "/MapaDengue/Relatorios/page": "app/MapaDengue/Relatorios/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
   "/api/focos/route": "app/api/focos/route.js",
-  "/api/upload/route": "app/api/upload/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js"
 }
